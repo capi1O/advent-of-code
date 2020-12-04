@@ -11,26 +11,42 @@ const levels = fs.readFileSync(path.resolve(process.cwd(), 'day3.txt'))
 	.toString('utf8')
 	.split('\n')
 	.filter(string => string !== '') // filter empty lines
-	.map(line => line.repeat(PATTERN_REPEAT)); // string to array of chars (# and .)
+	.map(line => line.repeat(PATTERN_REPEAT)); // repeat line multiple times on right
 
-// const DOWN_SHIFT = 1;
-const LEFT_SHIFT = 3;
+const countTreesOnSlope = (RIGHT_SHIFT, DOWN_SHIFT) => {
+	let rightShift = 0;
+	let numberOfTrees = 0;
+	for (let level = DOWN_SHIFT; level < levels.length; level += DOWN_SHIFT) { // skip first lines
 
-let leftShift = 0;
-let numberOfTrees = 0;
-levels.slice(1) // skip first line
-	.forEach(level => {
-	leftShift += LEFT_SHIFT;
-	if (leftShift > level.length - 1) {
-		console.error(`reached right wall`);
-		process.exit(1);
+		const levelLine = levels[level];
+		rightShift += RIGHT_SHIFT;
+
+		if (rightShift > levelLine.length - 1) {
+			console.error('reached right wall');
+			process.exit(1);
+		}
+		else {
+			const char = levelLine.charAt(rightShift);
+			if (char === '#') numberOfTrees += 1;
+		}
 	}
-	else {
-		const char = level.charAt(leftShift);
-		console.log(char);
-		if (char === '#') numberOfTrees += 1;
-	}
-});
 
-console.log(`crossed ${numberOfTrees} trees`);
+	console.log(`crossed ${numberOfTrees} trees on slope Right ${RIGHT_SHIFT}, Down ${DOWN_SHIFT}`);
+
+	return numberOfTrees;
+};
+
+const slopes = [
+	{ right: 1, down: 1 },
+	{ right: 3, down: 1 },
+	{ right: 5, down: 1 },
+	{ right: 7, down: 1 },
+	{ right: 1, down: 2 }
+];
+
+const result = slopes.map(({ right, down }) => countTreesOnSlope(right, down))
+	.reduce((acc, curr) => acc * curr, 1);
+
+console.log(result);
+
 process.exit(0);

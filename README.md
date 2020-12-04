@@ -1,6 +1,6 @@
 - [x] [day 1](https://adventofcode.com/2020/day/1)
 - [x] [day 2](https://adventofcode.com/2020/day/2)
-- [ ] [day 3](https://adventofcode.com/2020/day/3)
+- [x] [day 3](https://adventofcode.com/2020/day/3)
 - [x] [day 4](https://adventofcode.com/2020/day/4)
 - [ ] [day 5](https://adventofcode.com/2020/day/5)
 - [ ] [day 6](https://adventofcode.com/2020/day/6)
