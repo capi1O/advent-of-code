@@ -6,7 +6,7 @@ const path = require('path');
 const SLED_RENTAL_PLACE = 'SLED_RENTAL_PLACE';
 const OFFICIAL_TOBOGGAN_CORPORATE_POLICY = 'OFFICIAL_TOBOGGAN_CORPORATE_POLICY';
 
-// > Find the two entries that sum to 2020; what do you get if you multiply them together?
+// > Find number of pasword that match policy
 
 const policy = OFFICIAL_TOBOGGAN_CORPORATE_POLICY;
 
